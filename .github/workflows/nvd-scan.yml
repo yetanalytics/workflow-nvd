@@ -80,7 +80,7 @@ jobs:
           path: target/nvd
 
       - name: Notify Slack
-        if: ${{ inputs.slack-notification && (steps.scan.outcome == 'failure') }} # Only run if specified and on failure
+        if: inputs.slack-notification # ${{ inputs.slack-notification && (steps.scan.outcome == 'failure') }} # Only run if specified and on failure
         uses: slackapi/slack-github-action@v1.23.0
         with:
           payload: |
