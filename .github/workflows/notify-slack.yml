@@ -17,6 +17,8 @@ on:
 jobs:
   notify_slack:
     runs-on: ubuntu-latest
+    needs: nvd_scan
+    if: ${{ always() && (needs.nvd_scan.result == 'failure') }}
     steps:
     - name: Notify Slack with GitHub Action run link
     - uses: slackapi/slack-github-action@v1.23.0
