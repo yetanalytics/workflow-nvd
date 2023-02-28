@@ -18,6 +18,16 @@ on:
         description: nvd-clojure configuration file
         type: string
         default: ''
+      slack-notification:
+        required: false
+        description: Whether or not to report scan failures to slack
+        type: boolean
+        default: false
+      slack-link-var-name:
+        required: false
+        description: Slack workflow variable name for the GitHub repo link
+        type: string
+        default: 'run_link'
 
 jobs:
   scan:
@@ -50,6 +60,7 @@ jobs:
             ${{ runner.os }}-nvd-all-deps-
 
       - name: Run NVD scan
+        id: scan
         run: >
           clojure -Sdeps
           '{:aliases
@@ -67,4 +78,15 @@ jobs:
         with:
           name: ${{ github.sha }}-nvd-report
           path: target/nvd
+
+      - name: Notify Slack
+        if: ${{ inputs.slack-notification && (steps.scan.outcome == 'failure') }} # Only run if specified and on failure
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload: |
+            {
+              "${{ inputs.link-variable-name }}": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
