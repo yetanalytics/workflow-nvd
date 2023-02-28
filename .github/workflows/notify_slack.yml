@@ -1,0 +1,30 @@
+name: Notify NVD Scanning Failures to Slack
+
+on:
+  workflow_call:
+    inputs:
+      repo-name:
+        required: true
+        description: github repo name (e.g. 'yetanalytics/lrsql')
+        type: string
+
+      link-variable-name:
+        required: false
+        description: slack workflow variable name for the github repo link
+        type: string
+        default: 'run_link'
+
+jobs:
+  notify_slack:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Notify Slack with GitHub Action run link
+    - uses: slackapi/slack-github-action@v1.23.0
+      with:
+        payload: |
+          {
+            "${{ inputs.link-variable-name }}": "https://github.com/${{ inputs.repo-name }}/actions/runs/${{ github.run_id }}"
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
