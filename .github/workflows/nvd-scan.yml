@@ -79,11 +79,6 @@ jobs:
           name: ${{ github.sha }}-nvd-report
           path: target/nvd
 
-      - name: Print Slack-related info
-        run:
-          - 'echo Slack Notifications: ${{ inputs.slack-notification }}'
-          - 'echo NVD Scan Outcome: ${{ steps.scan.outcome }}'
-  
       - name: Notify Slack
         if: ${{ inputs.slack-notification && (steps.scan.outcome == 'failure') }} # Only run if specified and on failure
         uses: slackapi/slack-github-action@v1.23.0
