@@ -20,7 +20,7 @@ on:
         default: ''
       notify-slack:
         required: false
-        description: Whether or not to report scan failures to slack
+        description: Whether or not to report scan failures to Slack
         type: boolean
         default: false
       notify-link-var-name:
