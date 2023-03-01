@@ -18,16 +18,19 @@ on:
         description: nvd-clojure configuration file
         type: string
         default: ''
-      slack-notification:
+      notify-slack:
         required: false
         description: Whether or not to report scan failures to slack
         type: boolean
         default: false
-      slack-link-var-name:
+      notify-link-var-name:
         required: false
         description: Slack workflow variable name for the GitHub repo link
         type: string
         default: 'run_link'
+    secrets:
+      SLACK_WEBHOOK_URL:
+        required: false
 
 jobs:
   scan:
@@ -86,8 +89,7 @@ jobs:
         with:
           payload: |
             {
-              "${{ inputs.link-variable-name }}": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+              "${{ inputs.notify-link-var-name }}": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
