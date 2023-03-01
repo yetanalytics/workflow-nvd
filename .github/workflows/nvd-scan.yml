@@ -84,7 +84,7 @@ jobs:
 
       - name: Notify Slack
         # if: ${{ (inputs.slack-notification == 'true') && (steps.scan.outcome == 'failure') }} # Only run if specified and on failure
-        if: ${{ always() }}
+        if: ${{ (steps.scan.outcome == 'failure') }}
         uses: slackapi/slack-github-action@v1.23.0
         with:
           payload: |
