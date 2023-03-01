@@ -89,7 +89,7 @@ jobs:
           echo "Scan Outcome is ${{ steps.scan.outcome }}"
 
       - name: Notify Slack
-        # if: ${{ (inputs.slack-notification == 'true') && (steps.scan.outcome == 'failure') }} # Only run if specified and on failure
+        if: ${{ always() && (inputs.notify-slack == 'true') && (steps.scan.outcome == 'failure') }} # Only run if specified and on failure
         uses: slackapi/slack-github-action@v1.23.0
         with:
           payload: |
