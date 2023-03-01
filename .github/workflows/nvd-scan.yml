@@ -82,12 +82,6 @@ jobs:
           name: ${{ github.sha }}-nvd-report
           path: target/nvd
 
-      - name: Log to Console
-        if: ${{ always() }}
-        run: |
-          echo "Notify Slack is ${{ inputs.notify-slack }}"
-          echo "Scan Outcome is ${{ steps.scan.outcome }}"
-
       - name: Notify Slack
         if: ${{ always() && inputs.notify-slack && (steps.scan.outcome == 'failure') }} # Only run if specified and on failure
         uses: slackapi/slack-github-action@v1.23.0
