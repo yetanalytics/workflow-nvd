@@ -25,7 +25,7 @@ on:
         default: false
       notify-link-var-name:
         required: false
-        description: Slack workflow variable name for the GitHub repo link
+        description: Slack workflow variable name for the CI run link
         type: string
         default: 'run_link'
     secrets:

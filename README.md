@@ -11,8 +11,8 @@ The following are the inputs to the `nvd-scan` workflow, which is used to perfor
 | `notify-slack`         | Whether or not to report scan failures to Slack       | `false`
 | `notify-link-var-name` | Slack workflow variable name for the GitHub repo link | `run_link`
 
-If `notify-slack` is true, then an NVD scan failure will result in a notification being posted to Slack. To use:
-1. [Create a Slack workflow](https://slack.com/help/articles/360053571454-Set-up-a-workflow-in-Slack) (not to be confused with a GitHub workflow). The workflow should include a variable named `run_link` (or whatever name `notify-link-var-name` is set to) in the JSON payload.
+If `notify-slack` is true, then an NVD scan failure will result in a notification being posted to Slack, with the link to the failed CI run. To use:
+1. [Create a Slack workflow](https://slack.com/help/articles/360053571454-Set-up-a-workflow-in-Slack) (not to be confused with a GitHub workflow). The workflow should include a variable named `run_link` (or whatever name `notify-link-var-name` is set to) in the JSON payload, whose value will be set to the CI run link.
 2. Create a GitHub repository secret `SLACK_WEBHOOK_URL` using the generated webhook URL.
 3. Activate Slack notifications and pass the secret as follows:
 
