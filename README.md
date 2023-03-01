@@ -9,7 +9,7 @@ The following are the inputs to the `nvd-scan` workflow, which is used to perfor
 | `nvd-clojure-version`  | nvd-clojure version                                   | `2.9.0`
 | `nvd-config-filename`  | nvd-clojure configuration file                        | None
 | `notify-slack`         | Whether or not to report scan failures to Slack       | `false`
-| `notify-link-var-name` | Slack workflow variable name for the GitHub repo link | `run_link`
+| `notify-link-var-name` | Slack workflow variable name for the CI run link | `run_link`
 
 If `notify-slack` is true, then an NVD scan failure will result in a notification being posted to Slack, with the link to the failed CI run. To use:
 1. [Create a Slack workflow](https://slack.com/help/articles/360053571454-Set-up-a-workflow-in-Slack) (not to be confused with a GitHub workflow). The workflow should include a variable named `run_link` (or whatever name `notify-link-var-name` is set to) in the JSON payload, whose value will be set to the CI run link.
