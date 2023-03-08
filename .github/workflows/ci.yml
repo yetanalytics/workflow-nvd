@@ -9,10 +9,10 @@ on:
 
 jobs:
   nvd_scan:
-    continue-on-error: true
     uses: yetanalytics/workflow-nvd/.github/workflows/nvd-scan.yml@d03fa80b39dde4df45698ffd577dcd0c4de2f6b9
     with:
       notify-slack: true
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    continue-on-error: true
 
