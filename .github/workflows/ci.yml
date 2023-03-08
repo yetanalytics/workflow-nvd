@@ -14,5 +14,5 @@ jobs:
       notify-slack: true
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-    continue-on-error: true
+    # continue-on-error: true
 
