@@ -12,7 +12,7 @@ on:
         required: false
         description: nvd-clojure version
         type: string
-        default: '2.9.0'
+        default: '3.1.0'
       nvd-config-filename:
         required: false
         description: nvd-clojure configuration file
@@ -41,7 +41,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Clojure env
-        uses: yetanalytics/actions/setup-env@v0.0.4
+        uses: yetanalytics/action-setup-env@v1
 
       - name: Get current date
         id: date

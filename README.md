@@ -6,7 +6,7 @@ The following are the inputs to the `nvd-scan` workflow, which is used to perfor
 | Input                  | Description                                           | Default
 | ---                    | ---                                                   | ---
 | `classpath-command`    | nvd-clojure classpath command                         | `clojure -Spath`
-| `nvd-clojure-version`  | nvd-clojure version                                   | `2.9.0`
+| `nvd-clojure-version`  | nvd-clojure version                                   | `3.1.0`
 | `nvd-config-filename`  | nvd-clojure configuration file                        | None
 | `notify-slack`         | Whether or not to report scan failures to Slack       | `false`
 | `notify-link-var-name` | Slack workflow variable name for the CI run link | `run_link`
