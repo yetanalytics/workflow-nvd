@@ -1,6 +1,6 @@
 {:paths ["src/main"]
  :deps {org.clojure/clojure {:mvn/version "1.10.3"}
         ;; Uncomment in order to urposefully introduce Log4Shell
-        org.apache.logging.log4j/log4j-core {:mvn/version "2.14.1"} 
+        ;; org.apache.logging.log4j/log4j-core {:mvn/version "2.14.1"} 
         }}
 
