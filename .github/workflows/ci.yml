@@ -7,6 +7,8 @@ on:
     tags:
       - 'v*'
 
+# Normally this job will output success.
+# However we can cause this to fail by uncommenting the log4j dep in deps.edn
 jobs:
   nvd_scan:
     uses: yetanalytics/workflow-nvd/.github/workflows/nvd-scan.yml@d03fa80b39dde4df45698ffd577dcd0c4de2f6b9
@@ -14,5 +16,4 @@ jobs:
       notify-slack: true
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-    # continue-on-error: true
 
