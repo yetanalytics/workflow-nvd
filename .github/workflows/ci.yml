@@ -1,0 +1,19 @@
+name: CI for NVD scan reusable workflow 
+
+on:
+  push:
+    branches:
+      - '*'
+    tags:
+      - 'v*'
+
+# Normally this job will output success.
+# However we can cause this to fail by uncommenting the log4j dep in deps.edn
+jobs:
+  nvd_scan:
+    uses: yetanalytics/workflow-nvd/.github/workflows/nvd-scan.yml@d73cda8cf480db81bbf6a889fff9777bb6f19fb8
+    with:
+      notify-slack: true
+    secrets:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
