@@ -29,6 +29,8 @@ on:
         type: string
         default: 'run_link'
     secrets:
+      NVD_API_KEY:
+        required: true
       SLACK_WEBHOOK_URL:
         required: false
 
@@ -72,6 +74,7 @@ jobs:
           {nvd-clojure/nvd-clojure
           {:mvn/version "${{ inputs.nvd-clojure-version }}"}}}}}'
           -Xnvd nvd.task/check
+          :nvd-api '{:key "${{ secrets.SLACK_WEBHOOK_URL }}"}'
           :classpath '"'"$(${{ inputs.classpath-command }})"'"'
           :config-filename '"${{ inputs.nvd-config-filename }}"'
       
