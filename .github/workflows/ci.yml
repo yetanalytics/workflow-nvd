@@ -15,5 +15,6 @@ jobs:
     with:
       notify-slack: true
     secrets:
+      NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
