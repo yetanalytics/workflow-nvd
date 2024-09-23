@@ -11,7 +11,7 @@ on:
 # However we can cause this to fail by uncommenting the log4j dep in deps.edn
 jobs:
   nvd_scan:
-    uses: yetanalytics/workflow-nvd/.github/workflows/nvd-scan.yml@752da2d99f0399351d58ad1bf1a17743e9d7d7fa
+    uses: yetanalytics/workflow-nvd/.github/workflows/nvd-scan.yml@075ddfe15235e95590d9db32daff25b14d036976
     with:
       notify-slack: true
     secrets:
