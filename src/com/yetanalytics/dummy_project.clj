@@ -3,6 +3,5 @@
 
 (defn foo
   "Always returns true"
-  [& args_]
+  [& _args]
   true)
-
